@@ -1,0 +1,29 @@
+Darkuz_69's Log
+
+Date: 11:07 of 19/07/24 
+    This is my take on linked list. 
+    This implementation of mine uses generic typing, 
+    which means, the linked list can store any type of data
+    based on the type given.
+    Example:
+        LinkedList<int> -> LinkedList of integers
+        LinkedList<char *> -> LinkedList of strings
+        and so on...
+
+    Planning to implement:
+        Put more comments -> for understandability...
+        Insert function -> to insert a node to the list 
+                           (its like different of add_node beacause add_node pushes the new node to the end of the list)
+        Sort function -> sort all the node either ascending or descending (maybe create separate funtions for these)
+                        (find a way to sort any types of data) (use merge sort if possible)
+        Search function -> search for a specific node with the same data from the given data
+                           (maybe create a function to determine if data is sorted or not in order to find what type of search to use)
+                           (use Binary Search(if possible) and Linear Search)
+        Make this a into a library -> in order to be used anywhere, anytime
+                                      (try to learn linkers and whatnots...)
+    
+    Try to find adjustments in this implementation....
+    Pesronal Message to self:
+        Kun mabasa ni nimo tas di paka enrolled, patay jud kas imo tatay!! HAHAHAHAHAHA!!!
+        Kun enrolled na gai, praktis2 code kada gab-i...
+\
