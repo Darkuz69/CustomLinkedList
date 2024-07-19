@@ -26,4 +26,17 @@ Date: 11:07 of 19/07/24
     Pesronal Message to self:
         Kun mabasa ni nimo tas di paka enrolled, patay jud kas imo tatay!! HAHAHAHAHAHA!!!
         Kun enrolled na gai, praktis2 code kada gab-i...
-\
+
+Date: 8:01 PM of 19/07/24
+    Updates:
+        I've made an overload operator for the "[]" operator to give the linked list an ease of access using index..
+        Also, I've added a new variable, the list_size and a getter method for this..
+    Planning to implement:
+        (Done!!) Put more comments -> But I think I overdid it
+        (X) Insert function
+        (X) Sort function
+        (X) Search function
+        (X) Make this a into a library
+    Pesronal Message to self:
+        Enrolled na bruh!! HAHAHAHAHHA!! Excited for 2nd Year!! Gamay rag Minor subjects!!
+        Apil tas REVCO ha! Praktis tag DSA and otha shits!!
