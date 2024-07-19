@@ -1,7 +1,10 @@
 /*
     Darkuz_69 here...
 
-    Details and developments about these are on the log file (log.txt)
+    This is my take on Linked List.
+    As my preparations for DSA for 2nd Year...
+
+    This linked list is equipped with generic typing...
 */
 
 #include <iostream>
