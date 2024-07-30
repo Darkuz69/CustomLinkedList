@@ -40,3 +40,46 @@ Date: 8:01 PM of 19/07/24
     Pesronal Message to self:
         Enrolled na bruh!! HAHAHAHAHHA!! Excited for 2nd Year!! Gamay rag Minor subjects!!
         Apil tas REVCO ha! Praktis tag DSA and otha shits!!
+
+Date: 07:37 AM of 20/07/24
+    Update:
+        Just made this shit into a library!!
+        But I think I need to add more functionalities or others..
+    Planning to implement:
+        (Done!!) Put more comments -> But I think I overdid it
+        (X) Insert function
+        (X) Sort function
+        (X) Search function
+        (Done!!) Make this a into a library
+    Pesronal Message to self:
+        Wa lan sa tay PM rn....
+
+Date: 09:22 PM of 25/07/2024
+    Update:
+        Turns out, I have to define the class methods inside the header files when using templates, but i have fixed it already so its good!!
+        I have to edit it again, the code looks ugly!!
+        I've also overloaded the "[]" operator, for ease of access
+    Planning to implement:
+        (New!!) Remove node by data
+        (New!!) Remove node by index
+        (New!!) Search node by data
+        (New!!) Search node by index
+        (X) Insert function
+        (X) Sort function
+    Pesronal Message to self:
+        Sakit ako lubot nilingkod ari dapit sa may galingan, ayuha gyud ni nga library
+
+Date: 08:40 AM of 26/07/2024
+    Update:
+        I have finished editing the library, now it looks fine, however, there a no comments yet..
+        I've also added 2 functions: "push_front" and "remove_front"
+        I removed the overloaded "[]" operator, I don't think it's useful...
+    Planning to implement:
+        (X) Remove node by data
+        (X) Remove node by index
+        (X) Search node by data
+        (X) Search node by index
+        (X) Insert function
+        (X) Sort function
+    Pesronal Message to self:
+        Try-an daw tani i himo sa C Lang...
