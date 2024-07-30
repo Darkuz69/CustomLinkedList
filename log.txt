@@ -90,8 +90,8 @@
         I have done the insert function and remove at function...
         I've also added some exception classes for a better error handling (Thanks for the tip Gemini!!)
     📌 Planning to implement:
-        (Done!!) Remove node by data
-        (Cancelled) Remove node by index
+        (Cancelled) Remove node by data
+        (Done!!) Remove node by index
         (Cancelled) Search node by data
         (Cancelled) Search node by index
         (Done!!) Insert function
