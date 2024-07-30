@@ -14,6 +14,38 @@
 #define LINKEDLIST_H
 
 #include <iostream>
+#include <exception>
+
+// Exceptions
+class LinkedListisEmptyException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Linked List is empty!!";
+    }
+};
+
+class LinkedListIndexOutofRangeException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Index out of range!!";
+    }
+};
+
+class LinkedListMemoryAllocationExcpetion : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Memory Allocation has failed!!";
+    }
+};
+
+class LinkedListMaximumLimitException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Maximum limit reached!!";
+    }
+};
+// End (Exceptions)
+
 
 template <typename Type>
 struct Node {
@@ -42,14 +74,18 @@ public:
         this->length = 0;
     }
 
+    bool is_empty() const {
+        return (this->length == 0);
+    }
+
     void push_back(Type data) {
         if(this->length > this->maximum_size) {
-            throw std::runtime_error("LinkedListError: Maximum nodes has been reached\n");
+            throw LinkedListMaximumLimitException();
         }
 
         Node *new_node = new(std::nothrow) Node;
         if(new_node == NULL) {
-            throw std::runtime_error("LinkedListError: Memory allocation has failed\n");
+            throw LinkedListMemoryAllocationExcpetion();
         }
 
         new_node->data = data;
@@ -69,12 +105,12 @@ public:
 
     void push_front(Type data) {
         if(this->length > this->maximum_size) {
-            throw std::runtime_error("LinkedListError: Maximum nodes has been reached\n");
+            throw LinkedListMaximumLimitException();
         }
 
         Node *new_node = new(std::nothrow) Node;
         if(new_node == NULL) {
-            throw std::runtime_error("LinkedListError: Memory allocation has failed\n");
+            throw LinkedListMemoryAllocationExcpetion();
         }
 
         if(this->head_node == nullptr) {
@@ -85,11 +121,46 @@ public:
         new_node->data = data;
         new_node->next_node = this->head_node;
         this->head_node = new_node;
+        this->length++;
+    }
+
+    void push_at_nth(size_t nth, Type data) {
+        if(this->length > this->maximum_size) {
+            throw LinkedListMaximumLimitException();
+        }
+
+        if(nth <= 0 || nth > this->length) {
+            throw LinkedListIndexOutofRangeException();
+        }
+
+        if(nth == 1) {
+            this->push_front(data);
+            return;
+        } else if(nth == this->length) {
+            this->push_back(data);
+            return;
+        }
+
+        Node *previous_node = this->head_node;
+        for(size_t i = 1; i < nth - 1; i++) {
+            previous_node = previous_node->next_node;
+        }
+        Node *temp_node = previous_node->next_node;
+
+        Node *new_node = new(std::nothrow) Node;
+        if(new_node == NULL) {
+            throw LinkedListMemoryAllocationExcpetion();
+        }
+
+        new_node->data = data;
+        new_node->next_node = temp_node;
+        previous_node->next_node = new_node;
+        this->length++;
     }
 
     Type remove_back() {
         if(this->head_node == nullptr) {
-            throw std::runtime_error("LinkedListError: Linked list is empty\n");
+            throw LinkedListisEmptyException();
         }
 
         Node *temp_node = this->head_node;
@@ -108,13 +179,38 @@ public:
 
     Type remove_front() {
         if(this->head_node == nullptr) {
-            throw std::runtime_error("LinkedListError: Linked list is empty\n");
+            throw LinkedListisEmptyException();
         }
         
         Node *temp_node = this->head_node->next_node;
         Type return_data = this->head_node->data;
         delete this->head_node;
         this->head_node = temp_node;
+        this->length--;
+
+        return return_data;
+    }
+
+    Type remove_nth(size_t index) {
+        if(index <= 0 || index > this->length) {
+            throw LinkedListIndexOutofRangeException();
+        }
+
+        if(index == 1) {
+            return this->remove_front();
+        } else if (index == this->length) {
+            return this->remove_back();
+        }
+
+        Node *previous_node = this->head_node;
+        for(size_t i = 1; i < index - 1; i++) {
+            previous_node = previous_node->next_node;
+        }
+        Node *temp_node = previous_node->next_node;
+        Type return_data = temp_node->data;
+
+        previous_node->next_node = temp_node->next_node;
+        delete temp_node;
         this->length--;
 
         return return_data;
@@ -170,9 +266,7 @@ public:
         this->__print_list_reversed__(this->head_node);
     }
 
-    const Node* get_head() { return this->head_node; }
-
-    size_t get_length() { return this->length; }
+    size_t get_length() const { return this->length; }
 
 private:
     void delete_list(Node *temp_node) {
