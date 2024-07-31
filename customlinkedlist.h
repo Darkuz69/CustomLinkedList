@@ -10,8 +10,8 @@
     enjoy!! Or approach me if something's wrong...
 */
 
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef CUSTOMLINKEDLIST_H
+#define CUSTOMLINKEDLIST_H
 
 #include <iostream>
 #include <exception>
@@ -289,4 +289,4 @@ public:
     }
 };
 
-#endif //LINKEDLIST_H
+#endif //CUSTOMLINKEDLIST_H
