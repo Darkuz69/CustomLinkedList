@@ -71,15 +71,31 @@ public:
     LinkedList() {
         this->head_node = nullptr;
         this->tail_node = nullptr;
-        this->length = 0;
+        this->size = 0;
     }
 
-    bool is_empty() const {
-        return (this->length == 0);
+    bool isEmpty() const {
+        return (this->size == 0);
     }
 
-    void push_back(Type data) {
-        if(this->length > this->maximum_size) {
+    size_t indexOf(Type data) {
+        if(this->head_node == nullptr) {
+            throw LinkedListisEmptyException();
+        }
+
+        size_t counter = -1;
+        for(Node *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
+            counter++;
+            if(temp_node->data == data) {
+                return counter;
+            }
+        }
+
+        return -1;
+    }
+
+    void push(Type data) {
+        if(this->size > this->maximum_size) {
             throw LinkedListMaximumLimitException();
         }
 
@@ -94,17 +110,17 @@ public:
         if(this->head_node == nullptr) {
             this->head_node = new_node;
             this->tail_node = new_node;
-            this->length++;
+            this->size++;
             return;
         }
 
         this->tail_node->next_node = new_node;
         this->tail_node = new_node;
-        this->length++;
+        this->size++;
     }
 
-    void push_front(Type data) {
-        if(this->length > this->maximum_size) {
+    void offer(Type data) {
+        if(this->size > this->maximum_size) {
             throw LinkedListMaximumLimitException();
         }
 
@@ -114,35 +130,35 @@ public:
         }
 
         if(this->head_node == nullptr) {
-            this->push_back(data);
+            this->push(data);
             return;
         }
 
         new_node->data = data;
         new_node->next_node = this->head_node;
         this->head_node = new_node;
-        this->length++;
+        this->size++;
     }
 
-    void push_at_nth(size_t nth, Type data) {
-        if(this->length > this->maximum_size) {
+    void insert(size_t nth, Type data) {
+        if(this->size > this->maximum_size) {
             throw LinkedListMaximumLimitException();
         }
 
-        if(nth <= 0 || nth > this->length) {
+        if(nth < 0 || nth > this->size - 1) {
             throw LinkedListIndexOutofRangeException();
         }
 
-        if(nth == 1) {
-            this->push_front(data);
+        if(nth == 0) {
+            this->offer(data);
             return;
-        } else if(nth == this->length) {
-            this->push_back(data);
+        } else if(nth == this->size) {
+            this->push(data);
             return;
         }
 
         Node *previous_node = this->head_node;
-        for(size_t i = 1; i < nth - 1; i++) {
+        for(size_t i = 1; i < nth; i++) {
             previous_node = previous_node->next_node;
         }
         Node *temp_node = previous_node->next_node;
@@ -155,10 +171,10 @@ public:
         new_node->data = data;
         new_node->next_node = temp_node;
         previous_node->next_node = new_node;
-        this->length++;
+        this->size++;
     }
 
-    Type remove_back() {
+    Type pop() {
         if(this->head_node == nullptr) {
             throw LinkedListisEmptyException();
         }
@@ -172,12 +188,12 @@ public:
         delete this->tail_node;        
         this->tail_node = temp_node;
         this->tail_node->next_node = nullptr;
-        this->length--;
+        this->size--;
 
         return return_data;
     }
 
-    Type remove_front() {
+    Type poll() {
         if(this->head_node == nullptr) {
             throw LinkedListisEmptyException();
         }
@@ -186,38 +202,47 @@ public:
         Type return_data = this->head_node->data;
         delete this->head_node;
         this->head_node = temp_node;
-        this->length--;
+        this->size--;
 
         return return_data;
     }
 
-    Type remove_nth(size_t index) {
-        if(index <= 0 || index > this->length) {
-            throw LinkedListIndexOutofRangeException();
+    Type remove(Type data) {
+        if(this->head_node == nullptr) {
+            throw LinkedListisEmptyException();
         }
 
-        if(index == 1) {
-            return this->remove_front();
-        } else if (index == this->length) {
-            return this->remove_back();
+        int index = this->indexOf(data);
+        if(index == -1) {
+            return NULL;
+        } else if (index == 0) {
+            return this->poll();
+        } else if(index == (int)(this->size - 1)) {
+            return this->pop();
         }
 
-        Node *previous_node = this->head_node;
-        for(size_t i = 1; i < index - 1; i++) {
-            previous_node = previous_node->next_node;
+        Node *temp_node = this->head_node;
+        int counter = 0;
+        while(temp_node != nullptr && counter < index - 1) {
+            temp_node = temp_node->next_node;
+            counter++;
         }
-        Node *temp_node = previous_node->next_node;
-        Type return_data = temp_node->data;
 
-        previous_node->next_node = temp_node->next_node;
-        delete temp_node;
-        this->length--;
+        Node *delete_node = temp_node->next_node;
+        Type return_data = delete_node->data;
+        temp_node->next_node = delete_node->next_node;
+        delete delete_node;
 
         return return_data;
     }
 
 private:
     void __print_list__(Node *temp_node) {
+        if(this->size == 0) {
+            std::cout << "[]\n";
+            return;
+        }
+
         if(this->head_node == nullptr) {
             return;
         }
@@ -239,6 +264,11 @@ private:
     }
 
     void __print_list_reversed__(Node *temp_node) {
+        if(this->size == 0) {
+            std::cout << "[]\n";
+            return;
+        }
+
         if(this->head_node == nullptr) {
             return;
         }
@@ -258,16 +288,40 @@ private:
     }
 
 public:
-    void print_list() {
+    void printList() {
         this->__print_list__(this->head_node);
     }
 
-    void print_list_reversed() {
+    void printListReversed() {
         this->__print_list_reversed__(this->head_node);
     }
 
-    size_t get_length() const { return this->length; }
+    size_t getSize() const { return this->size; }
 
+    Type peekFirst() const { return this->head_node->data; }
+
+    Type peekLast() const { return this->tail_node->data; }
+
+    Type peekAtIndex(size_t index) const {
+        if(index < 0 || index > this->size - 1) {
+            throw LinkedListIndexOutofRangeException();
+        }
+
+        if(index == 0) {
+            return peekFirst();
+        } else if (index == this->size - 1) {
+            return peekLast();
+        }
+
+        Node *temp_node = this->head_node;
+        size_t counter = 0;
+        while(temp_node != nullptr && counter < index) {
+            temp_node = temp_node->next_node;
+            counter++;
+        }
+
+        return temp_node->data;
+    }
 private:
     void delete_list(Node *temp_node) {
         if(temp_node == nullptr) {
@@ -280,7 +334,7 @@ private:
 
         this->head_node = nullptr;
         this->tail_node = nullptr;
-        this->length = 0;
+        this->size = 0;
     }
 
 public:

@@ -1,6 +1,6 @@
-#📝 Darkuz_69's Log
+📝 Darkuz_69's Log
 
-#📅 Date: 11:07 AM of 19/07/24 
+📅 Date: 11:07 AM of 19/07/24 
     This is my take on linked list. 
     This implementation of mine uses generic typing, 
     which means, the linked list can store any type of data
@@ -27,7 +27,7 @@
         Kun mabasa ni nimo tas di paka enrolled, patay jud kas imo tatay!! HAHAHAHAHAHA!!!
         Kun enrolled na gai, praktis2 code kada gab-i...
 
-#📅 Date: 8:01 PM of 19/07/24
+📅 Date: 8:01 PM of 19/07/24
     🔔 Updates:
         I've made an overload operator for the "[]" operator to give the linked list an ease of access using index..
         Also, I've added a new variable, the list_size and a getter method for this..
@@ -42,7 +42,7 @@
         Enrolled na bruh!! HAHAHAHAHHA!! Excited for 2nd Year!! Gamay rag Minor subjects!!
         Apil tas REVCO ha! Praktis tag DSA and otha shits!!
 
-#📅 Date: 07:37 AM of 20/07/24
+📅 Date: 07:37 AM of 20/07/24
     🔔 Updates:
         Just made this shit into a library!!
         But I think I need to add more functionalities or others..
@@ -55,7 +55,7 @@
     📬 Pesronal Message to self:
         Wa lan sa tay PM rn....
 
-#📅 Date: 09:22 PM of 25/07/2024
+📅 Date: 09:22 PM of 25/07/2024
     🔔 Updates:
         Turns out, I have to define the class methods inside the header files when using templates, but i have fixed it already so its good!!
         I have to edit it again, the code looks ugly!!
@@ -70,7 +70,7 @@
     📬 Pesronal Message to self:
         Sakit ako lubot nilingkod ari dapit sa may galingan, ayuha gyud ni nga library
 
-#📅 Date: 08:40 AM of 26/07/2024
+📅 Date: 08:40 AM of 26/07/2024
     🔔 Updates:
         I have finished editing the library, now it looks fine, however, there a no comments yet..
         I've also added 2 functions: "push_front" and "remove_front"
@@ -85,13 +85,13 @@
     📬 Pesronal Message to self:
         Try-an daw tani i himo sa C Lang...
 
-#📅 Date: 09:37 PM of 30/07/2024
+📅 Date: 09:37 PM of 30/07/2024
     🔔 Updates:
         I have done the insert function and remove at function...
         I've also added some exception classes for a better error handling (Thanks for the tip Gemini!!)
     📌 Planning to implement:
-        (Cancelled) Remove node by data
-        (Done!!) Remove node by index
+        (Done!!) Remove node by data
+        (Cancelled) Remove node by index
         (Cancelled) Search node by data
         (Cancelled) Search node by index
         (Done!!) Insert function
@@ -99,3 +99,12 @@
     📬 Pesronal Message to self:
         6 days 'till D-DAY!! Gotta do more HAHAHHA!!
         Can you do the custom stack library within the 6 days??
+
+📅 Date: 07:24 PM of 06/08/2024
+    🔔 Updates: 
+        Updated names of some functions, and updated the readme following the changes
+    📌 Planning to implement:
+        None at the moment
+    📬 Pesronal Message to self:
+        Wa naman siguroy igdudugang ani, so i implement nalang ni sa stack ug queue ug sa HashMap if possible
+        Keep up the good work, mahmen!!

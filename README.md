@@ -3,16 +3,23 @@
   This is in preparation for my DSA subject.
 
   #  🤖 Methods
-  This linked-list implementation is written in C++. I used OOP for this one. Here are some of its methods:
-  - 🫸push_front(data) -> pushes/inserts a node at the start of the list
-  - 🫸push_back(data) -> pushes/inserts a node at the end of the list
-  - 🫸push_at_nth(index, data) -> pushes/inserts a node at the nth position
-  - 🗑️remove_front() -> removes the node at the start of the list
-  - 🗑️remove_back() -> removes the node at the end of the list
-  - 🗑️remove_nth(index) -> removes the node at the nth position
-  - 🚚get_length() -> returns the size of the list
-  - 🖨️print_list() -> prints the contents of the list in forward manner
-  - 🖨️print_list_reversed() -> prints the contents of the list in reversed manner
+  This linked-list implementation is written in C++. I used "classes" for this one. Here are some of its methods:
+  - 🫸 offer(data) -> pushes/inserts a node at the start of the list
+  - 🫸 push(data) -> pushes/inserts a node at the end of the list
+  - 🫸 insert(index, data) -> pushes/inserts a node at the nth position
+  - 🗑️ poll() -> removes the node at the start of the list
+  - 🗑️ pop() -> removes the node at the end of the list
+  - 🗑️ remove(data) -> removes the node with the same data
+  - 👀 peekFirst() -> returns a read-only version of the data of the head node
+  - 👀 peekLast() -> returns a read-only version of the data of the last node
+  - 👀 peekAt(index) -> returns a read-only version of the data of the nth node 
+  - 🖨️ printList() -> prints the contents of the list in forward manner
+  - 🖨️ printListReversed() -> prints the contents of the list in reversed manner
+  - 🚚 getSize() -> returns the current size of the list (read-only)
+  - 📪 isEmpty() -> returns true if the list is empty
+  - 👉 indexOf(data) -> returns the index of the data given
+
+  📢 Note: This implementation uses 0-based indexing...
 
 There are also exception classes for error handling:
  - ⚠️ LinkedListisEmptyException
