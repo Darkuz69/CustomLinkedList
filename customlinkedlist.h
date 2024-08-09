@@ -65,7 +65,7 @@ protected:
     Node *head_node;
     Node *tail_node;
     size_t size;
-    size_t maximum_size = SIZE_MAX / sizeof(Node);
+    static const size_t maximum_size = SIZE_MAX / sizeof(Node<Type>);
 
 public:
     LinkedList() {
