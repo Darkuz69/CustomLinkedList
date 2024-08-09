@@ -64,7 +64,7 @@ public:
 protected:
     Node *head_node;
     Node *tail_node;
-    size_t length;
+    size_t size;
     size_t maximum_size = SIZE_MAX / sizeof(Node);
 
 public:
