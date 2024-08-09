@@ -187,7 +187,7 @@ public:
             this->head_node = nullptr;
             this->tail_node = nullptr;
         } else {
-            Node<Type> *temp_node;
+            Node<Type> *temp_node = this->head_node;
             while(temp_node->next_node != this->tail_node) {
                 temp_node = temp_node->next_node;
             }
