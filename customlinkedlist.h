@@ -298,12 +298,22 @@ public:
 
     size_t getSize() const { return this->size; }
 
-    Type peekFirst() const { return this->head_node->data; }
+    Type peekFirst() const {
+        if(this->isEmpty()) {
+            throw LinkedListisEmptyException();
+        }
+        return this->head_node->data; 
+    }
 
-    Type peekLast() const { return this->tail_node->data; }
+    Type peekLast() const { 
+        if(this->isEmpty()) {
+            throw LinkedListisEmptyException();
+        }
+        return this->tail_node->data; 
+    }
 
     Type peekAtIndex(size_t index) const {
-        if(index < 0 || index > this->size - 1) {
+        if(index > this->size - 1) {
             throw LinkedListIndexOutofRangeException();
         }
 
