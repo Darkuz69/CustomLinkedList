@@ -47,21 +47,15 @@ public:
 // End (Exceptions)
 
 
-template <typename Type>
-struct Node {
-    Type data;
-    struct Node *next_node;  
-};
 
 template <typename Type>
 class LinkedList {
-public:
+protected:    
     typedef struct node {
         Type data;
         struct node *next_node;
     } Node;
 
-protected:
     Node *head_node;
     Node *tail_node;
     size_t size;
