@@ -31,7 +31,7 @@ public:
     }
 };
 
-class LinkedListMemoryAllocationExcpetion : public std::exception {
+class LinkedListMemoryAllocationException : public std::exception {
 public:
     const char* what() const noexcept override {
         return "Memory Allocation has failed!!";
@@ -94,7 +94,7 @@ public:
 
         Node<Type> *new_node = new(std::nothrow) Node<Type>;
         if(new_node == NULL) {
-            throw LinkedListMemoryAllocationExcpetion();
+            throw LinkedListMemoryAllocationException();
         }
 
         new_node->data = data;
@@ -119,7 +119,7 @@ public:
 
         Node<Type> *new_node = new(std::nothrow) Node<Type>;
         if(new_node == NULL) {
-            throw LinkedListMemoryAllocationExcpetion();
+            throw LinkedListMemoryAllocationException();
         }
 
         if(this->head_node == nullptr) {
@@ -138,7 +138,7 @@ public:
             throw LinkedListMaximumLimitException();
         }
 
-        if(index < 0 || index > this->size) {
+        if(index > this->size) {
             throw LinkedListIndexOutofRangeException();
         }
 
@@ -158,7 +158,7 @@ public:
 
         Node<Type> *new_node = new(std::nothrow) Node<Type>;
         if(new_node == NULL) {
-            throw LinkedListMemoryAllocationExcpetion();
+            throw LinkedListMemoryAllocationException();
         }
 
         new_node->data = data;
