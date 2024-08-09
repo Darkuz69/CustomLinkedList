@@ -188,7 +188,10 @@ public:
             this->tail_node = nullptr;
         } else {
             Node<Type> *temp_node;
-            for(*temp_node = this->head_node; temp_node->next_node != this->tail_node; temp_node = temp_node->next_node) {}
+            while(temp_node->next_node != this->tail_node) {
+                temp_node = temp_node->next_node;
+            }
+
             return_data = this->tail_node->data;
             delete this->tail_node;
             this->tail_node = temp_node;
