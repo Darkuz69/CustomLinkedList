@@ -13,7 +13,6 @@
 #ifndef CUSTOMLINKEDLIST_H
 #define CUSTOMLINKEDLIST_H
 
-#include <iostream>
 #include <exception>
 
 // Exceptions
@@ -64,7 +63,7 @@ public:
 protected:
     Node *head_node;
     Node *tail_node;
-    size_t size;
+    size_t length;
     size_t maximum_size = SIZE_MAX / sizeof(Node);
 
 public:
@@ -328,9 +327,8 @@ private:
             return;
         }
 
-        Node *next = temp_node->next_node;
+        this->delete_list(temp_node->next_node);
         delete temp_node;
-        delete_list(next);
 
         this->head_node = nullptr;
         this->tail_node = nullptr;
