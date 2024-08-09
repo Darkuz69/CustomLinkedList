@@ -14,7 +14,7 @@
 #define CUSTOMLINKEDLIST_H
 
 #include <iostream>
-#include <vector>
+#include <sstream>
 #include <exception>
 
 // Exceptions
@@ -251,20 +251,21 @@ public:
             return "[]";
         }
 
-        std::string toStr = "[";
+        std::stringstream toStr;
+        toStr << "[";
         for(Node<Type> *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
-            if(typeid(temp_node->data) == typeid(std::string)) {
-                toStr += "\"" + temp_node->data + "\"";
+            if(std::is_same<Type, std::string>::value) {
+                toStr << "\"" << temp_node->data << "\"";
             } else {
-                toStr += temp_node->data;
+                toStr << temp_node->data;
             }
             if(temp_node->next_node != nullptr) {
-                toStr += ", ";
+                toStr << ", ";
             }
         }
-        toStr += "]\n";
+        toStr << "]\n";
 
-        return toStr;
+        return toStr.str();
     }
 
     std::string toStringReversed() {
@@ -274,20 +275,21 @@ public:
             temp_list[i++] = temp_node->data;
         }
 
-        std::string revStr = "[";
+        std::stringstream revStr;
+        revStr << "[";
         for(int i = this->size - 1; i >= 0; i--) {
-            if(typeid(temp_list[i]) == typeid(std::string)) {
-                revStr += "\"" + temp_list[i] + "\"";
+            if(std::is_same<Type, std::string>::value) {
+                revStr << "\"" << temp_list[i] << "\"";
             } else {
-                revStr += temp_list[i];
+                revStr << temp_list[i];
             }
             if(i > 0) {
-                revStr += ", ";
+                revStr << ", ";
             }
         }
-        revStr += "]\n";
+        revStr << "]\n";
 
-        return revStr;
+        return revStr.str();
     }
 
     size_t getSize() const { return this->size; }
