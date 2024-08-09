@@ -78,12 +78,12 @@ public:
         return (this->size == 0);
     }
 
-    size_t indexOf(Type data) {
+    int indexOf(Type data) {
         if(this->head_node == nullptr) {
             throw LinkedListisEmptyException();
         }
 
-        size_t counter = -1;
+        int counter = -1;
         for(Node<Type> *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
             counter++;
             if(temp_node->data == data) {
