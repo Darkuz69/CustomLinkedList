@@ -13,13 +13,16 @@
   - 👀 peekFirst() -> returns a read-only version of the data of the head node
   - 👀 peekLast() -> returns a read-only version of the data of the last node
   - 👀 peekAt(index) -> returns a read-only version of the data of the nth node 
-  - 🖨️ printList() -> prints the contents of the list in forward manner
-  - 🖨️ printListReversed() -> prints the contents of the list in reversed manner
+  - 🖨️ toString() -> returns a string of contents of the list in forward manner
+  - 🖨️ toStringReversed() -> returns a string of contents of the list in reversed manner
   - 🚚 getSize() -> returns the current size of the list (read-only)
   - 📪 isEmpty() -> returns true if the list is empty
   - 👉 indexOf(data) -> returns the index of the data given
 
-  📢 Note: This implementation uses 0-based indexing...
+  📢 Disclaimer
+  - 🔔 This implementation uses 0-based indexing
+  - 🔔 The "toString()" and "toStringReversed()" currently supports only the following types: bool, char, double, int, std::string. 
+
 
 There are also exception classes for error handling:
  - ⚠️ LinkedListisEmptyException

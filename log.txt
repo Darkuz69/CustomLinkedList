@@ -108,3 +108,13 @@
     📬 Pesronal Message to self:
         Wa naman siguroy igdudugang ani, so i implement nalang ni sa stack ug queue ug sa HashMap if possible
         Keep up the good work, mahmen!!
+
+📅 Date: 12:34 PM of 10/08/2024
+    🔔 Updates: 
+        Updated the "delete_list" function.
+        Also updated the "printList" into "toString", and "printListReversed" to "toStringReversed"
+    📌 Planning to implement:
+        Try to handle custom data types for the toString and toStringReversed functions
+    📬 Pesronal Message to self:
+        Katol sa tiil. Abi nakog okay nato, may mga memory defects man diay tong last version.
+        Still, continue on what you're doin' man!!
