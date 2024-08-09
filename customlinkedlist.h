@@ -179,23 +179,23 @@ public:
             throw LinkedListisEmptyException();
         }
 
-        Node<Type> *temp_node = this->head_node;
-        while((this->head_node != this->tail_node) && (this->tail_node->next_node != this->tail_node)) {
-            temp_node = temp_node->next_node;
-        }
+        Type return_data;
 
-        Type return_data = this->tail_node->data;
-        delete this->tail_node;
-        if(this->tail_node != this->head_node) {
-            this->tail_node = temp_node;
-            this->tail_node->next_node = nullptr;
-        } else {
+        if(this->head_node == this->tail_node) {
+            return_data = this->head_node->data;
+            delete this->head_node;
             this->head_node = nullptr;
             this->tail_node = nullptr;
+        } else {
+            Node<Type> *temp_node;
+            for(*temp_node = this->head_node; temp_node->next_node != this->tail_node; temp_node = temp_node->next_node) {}
+            return_data = this->tail_node->data;
+            delete this->tail_node;
+            this->tail_node = temp_node;
+            this->tail_node->next_node = nullptr;
         }
+
         this->size--;
-
-
         return return_data;
     }
 
