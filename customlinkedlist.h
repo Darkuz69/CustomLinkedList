@@ -75,7 +75,7 @@ public:
     }
 
     bool isEmpty() const {
-        return (this->size == 0);
+        return (this->head_node == nullptr);
     }
 
     int indexOf(Type data) {
@@ -180,15 +180,21 @@ public:
         }
 
         Node<Type> *temp_node = this->head_node;
-        while(temp_node->next_node != this->tail_node) {
+        while((this->head_node != this->tail_node) && (this->tail_node->next_node != this->tail_node)) {
             temp_node = temp_node->next_node;
         }
 
         Type return_data = this->tail_node->data;
-        delete this->tail_node;        
-        this->tail_node = temp_node;
-        this->tail_node->next_node = nullptr;
+        delete this->tail_node;
+        if(this->tail_node != this->head_node) {
+            this->tail_node = temp_node;
+            this->tail_node->next_node = nullptr;
+        } else {
+            this->head_node = nullptr;
+            this->tail_node = nullptr;
+        }
         this->size--;
+
 
         return return_data;
     }
