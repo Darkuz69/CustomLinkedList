@@ -14,6 +14,7 @@
 #define CUSTOMLINKEDLIST_H
 
 #include <iostream>
+#include <vector>
 #include <exception>
 
 // Exceptions
@@ -79,7 +80,7 @@ public:
     }
 
     int indexOf(Type data) {
-        if(this->head_node == nullptr) {
+        if(this->isEmpty()) {
             throw LinkedListisEmptyException();
         }
 
@@ -175,7 +176,7 @@ public:
     }
 
     Type pop() {
-        if(this->head_node == nullptr) {
+        if(this->isEmpty()) {
             throw LinkedListisEmptyException();
         }
 
@@ -203,7 +204,7 @@ public:
     }
 
     Type poll() {
-        if(this->head_node == nullptr) {
+        if(this->isEmpty()) {
             throw LinkedListisEmptyException();
         }
         
@@ -217,7 +218,7 @@ public:
     }
 
     Type remove(Type data) {
-        if(this->head_node == nullptr) {
+        if(this->isEmpty()) {
             throw LinkedListisEmptyException();
         }
 
@@ -245,64 +246,48 @@ public:
         return return_data;
     }
 
-private:
-    void __print_list__(Node<Type> *temp_node) {
-        if(this->size == 0) {
-            std::cout << "[]\n";
-            return;
+    std::string toString() {
+        if(this->isEmpty()) {
+            return "[]";
         }
 
-        if(this->head_node == nullptr) {
-            return;
+        std::string toStr = "[";
+        for(Node<Type> *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
+            if(typeid(temp_node->data) == typeid(std::string)) {
+                toStr += "\"" + temp_node->data + "\"";
+            } else {
+                toStr += temp_node->data;
+            }
+            if(temp_node->next_node != nullptr) {
+                toStr += ", ";
+            }
         }
+        toStr += "]\n";
 
-        if(temp_node == nullptr) {
-            std::cout << "]\n";
-            return;
-        }
-
-        if(temp_node == this->head_node) {
-            std::cout << "[";
-        }
-        std::cout << temp_node->data;
-        if(temp_node->next_node != nullptr) {
-            std::cout << ", ";
-        }
-        
-        __print_list__(temp_node->next_node);
+        return toStr;
     }
 
-    void __print_list_reversed__(Node<Type> *temp_node) {
-        if(this->size == 0) {
-            std::cout << "[]\n";
-            return;
+    std::string toStringReversed() {
+        Type temp_list[this->size];
+        int i = 0;
+        for(Node<Type> *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
+            temp_list[i++] = temp_node->data;
         }
 
-        if(this->head_node == nullptr) {
-            return;
+        std::string revStr = "[";
+        for(int i = this->size - 1; i >= 0; i--) {
+            if(typeid(temp_list[i]) == typeid(std::string)) {
+                revStr += "\"" + temp_list[i] + "\"";
+            } else {
+                revStr += temp_list[i];
+            }
+            if(i > 0) {
+                revStr += ", ";
+            }
         }
+        revStr += "]\n";
 
-        if(temp_node == nullptr) {
-            std::cout << "[";
-            return;
-        }
-
-        __print_list_reversed__(temp_node->next_node);
-        std::cout << temp_node->data;
-        if(temp_node != this->head_node) {
-            std::cout << ", ";
-        } else {
-            std::cout << "]\n";
-        }
-    }
-
-public:
-    void printList() {
-        this->__print_list__(this->head_node);
-    }
-
-    void printListReversed() {
-        this->__print_list_reversed__(this->head_node);
+        return revStr;
     }
 
     size_t getSize() const { return this->size; }
