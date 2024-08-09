@@ -323,10 +323,6 @@ private:
 
         this->delete_list(temp_node->next_node);
         delete temp_node;
-
-        this->head_node = nullptr;
-        this->tail_node = nullptr;
-        this->size = 0;
     }
 
 public:
