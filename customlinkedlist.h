@@ -13,6 +13,7 @@
 #ifndef CUSTOMLINKEDLIST_H
 #define CUSTOMLINKEDLIST_H
 
+#include <iostream>
 #include <exception>
 
 // Exceptions
