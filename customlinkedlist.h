@@ -47,17 +47,16 @@ public:
 // End (Exceptions)
 
 
+template <typename Type>
+struct Node {
+    Type data;
+    Node *next_node;
+};
 
 template <typename Type>
-class LinkedList {
-protected:    
-    typedef struct node {
-        Type data;
-        struct node *next_node;
-    } Node;
-
-    Node *head_node;
-    Node *tail_node;
+class LinkedList { 
+    Node<Type> *head_node;
+    Node<Type> *tail_node;
     size_t size;
     static const size_t maximum_size = SIZE_MAX / sizeof(Node<Type>);
 
@@ -78,7 +77,7 @@ public:
         }
 
         size_t counter = -1;
-        for(Node *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
+        for(Node<Type> *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
             counter++;
             if(temp_node->data == data) {
                 return counter;
@@ -93,7 +92,7 @@ public:
             throw LinkedListMaximumLimitException();
         }
 
-        Node *new_node = new(std::nothrow) Node;
+        Node<Type> *new_node = new(std::nothrow) Node<Type>;
         if(new_node == NULL) {
             throw LinkedListMemoryAllocationExcpetion();
         }
@@ -118,7 +117,7 @@ public:
             throw LinkedListMaximumLimitException();
         }
 
-        Node *new_node = new(std::nothrow) Node;
+        Node<Type> *new_node = new(std::nothrow) Node<Type>;
         if(new_node == NULL) {
             throw LinkedListMemoryAllocationExcpetion();
         }
@@ -134,30 +133,30 @@ public:
         this->size++;
     }
 
-    void insert(size_t nth, Type data) {
+    void insert(size_t index, Type data) {
         if(this->size > this->maximum_size) {
             throw LinkedListMaximumLimitException();
         }
 
-        if(nth < 0 || nth > this->size - 1) {
+        if(index < 0 || index > this->size) {
             throw LinkedListIndexOutofRangeException();
         }
 
-        if(nth == 0) {
+        if(index == 0) {
             this->offer(data);
             return;
-        } else if(nth == this->size) {
+        } else if(index == this->size) {
             this->push(data);
             return;
         }
 
-        Node *previous_node = this->head_node;
-        for(size_t i = 1; i < nth; i++) {
+        Node<Type> *previous_node = this->head_node;
+        for(size_t i = 1; i < index; i++) {
             previous_node = previous_node->next_node;
         }
-        Node *temp_node = previous_node->next_node;
+        Node<Type> *temp_node = previous_node->next_node;
 
-        Node *new_node = new(std::nothrow) Node;
+        Node<Type> *new_node = new(std::nothrow) Node<Type>;
         if(new_node == NULL) {
             throw LinkedListMemoryAllocationExcpetion();
         }
@@ -173,7 +172,7 @@ public:
             throw LinkedListisEmptyException();
         }
 
-        Node *temp_node = this->head_node;
+        Node<Type> *temp_node = this->head_node;
         while(temp_node->next_node != this->tail_node) {
             temp_node = temp_node->next_node;
         }
@@ -192,7 +191,7 @@ public:
             throw LinkedListisEmptyException();
         }
         
-        Node *temp_node = this->head_node->next_node;
+        Node<Type> *temp_node = this->head_node->next_node;
         Type return_data = this->head_node->data;
         delete this->head_node;
         this->head_node = temp_node;
@@ -215,14 +214,14 @@ public:
             return this->pop();
         }
 
-        Node *temp_node = this->head_node;
+        Node<Type> *temp_node = this->head_node;
         int counter = 0;
         while(temp_node != nullptr && counter < index - 1) {
             temp_node = temp_node->next_node;
             counter++;
         }
 
-        Node *delete_node = temp_node->next_node;
+        Node<Type> *delete_node = temp_node->next_node;
         Type return_data = delete_node->data;
         temp_node->next_node = delete_node->next_node;
         delete delete_node;
@@ -231,7 +230,7 @@ public:
     }
 
 private:
-    void __print_list__(Node *temp_node) {
+    void __print_list__(Node<Type> *temp_node) {
         if(this->size == 0) {
             std::cout << "[]\n";
             return;
@@ -257,7 +256,7 @@ private:
         __print_list__(temp_node->next_node);
     }
 
-    void __print_list_reversed__(Node *temp_node) {
+    void __print_list_reversed__(Node<Type> *temp_node) {
         if(this->size == 0) {
             std::cout << "[]\n";
             return;
@@ -307,7 +306,7 @@ public:
             return peekLast();
         }
 
-        Node *temp_node = this->head_node;
+        Node<Type> *temp_node = this->head_node;
         size_t counter = 0;
         while(temp_node != nullptr && counter < index) {
             temp_node = temp_node->next_node;
@@ -317,7 +316,7 @@ public:
         return temp_node->data;
     }
 private:
-    void delete_list(Node *temp_node) {
+    void delete_list(Node<Type> *temp_node) {
         if(temp_node == nullptr) {
             return;
         }
