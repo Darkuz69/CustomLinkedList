@@ -44,6 +44,13 @@ public:
         return "Maximum limit reached!!";
     }
 };
+
+class LinkedListNodeNotFoundException : public std::exception {
+public:
+    const char* what() const noexcept override {
+        return "Node with such data was not found!!";
+    }
+};
 // End (Exceptions)
 
 
@@ -207,7 +214,7 @@ public:
 
         int index = this->indexOf(data);
         if(index == -1) {
-            return NULL;
+            throw LinkedListNodeNotFoundException();
         } else if (index == 0) {
             return this->poll();
         } else if(index == (int)(this->size - 1)) {
