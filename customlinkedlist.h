@@ -246,7 +246,7 @@ public:
         return return_data;
     }
 
-    std::string toString() {
+    std::string toString() const {
         if(this->isEmpty()) {
             return "[]";
         }
@@ -268,7 +268,7 @@ public:
         return toStr.str();
     }
 
-    std::string toStringReversed() {
+    std::string toStringReversed() const {
         Type temp_list[this->size];
         int i = 0;
         for(Node<Type> *temp_node = this->head_node; temp_node != nullptr; temp_node = temp_node->next_node) {
@@ -329,13 +329,15 @@ public:
         return temp_node->data;
     }
 private:
-    void delete_list(Node<Type> *temp_node) {
-        if(temp_node == nullptr) {
-            return;
+    void delete_list() {
+        Node<Type> *temp_node = this->head_node;
+
+        while(temp_node != nullptr) {
+            Node<Type> *next_node = temp_node->next_node;
+            delete temp_node;
+            temp_node = next_node;
         }
 
-        this->delete_list(temp_node->next_node);
-        delete temp_node;
     }
 
 public:

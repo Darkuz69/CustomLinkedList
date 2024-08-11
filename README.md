@@ -23,12 +23,12 @@
   - 🔔 This implementation uses 0-based indexing
   - 🔔 The "toString()" and "toStringReversed()" currently supports only the following types: bool, char, double, int, std::string. 
 
+
 There are also exception classes for error handling:
  - ⚠️ LinkedListisEmptyException
  - ⚠️ LinkedListIndexOutofRangeException
  - ⚠️ LinkedListMemoryAllocationException
  - ⚠️ LinkedListMaximumLimitException
- - ⚠️ LinkedListNodeNotFoundException
 
 # 📜 Log.txt
 These file contains the "behind-the-scenes" process as I create this project. Some phrases are written in my native language, so apologies in advance (if someone finds this repo)
