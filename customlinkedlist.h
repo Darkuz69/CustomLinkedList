@@ -342,7 +342,7 @@ private:
 
 public:
     ~LinkedList() {
-        this->delete_list(this->head_node);
+        this->delete_list();
     }
 };
 
