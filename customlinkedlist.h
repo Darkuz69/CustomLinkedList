@@ -263,7 +263,7 @@ public:
                 toStr << ", ";
             }
         }
-        toStr << "]\n";
+        toStr << "]";
 
         return toStr.str();
     }
@@ -287,7 +287,7 @@ public:
                 revStr << ", ";
             }
         }
-        revStr << "]\n";
+        revStr << "]";
 
         return revStr.str();
     }
